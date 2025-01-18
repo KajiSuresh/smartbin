@@ -11,6 +11,9 @@ import {
   Map,
   Bell,
   LogOut,
+  Trash ,
+  User,
+  Newspaper
 } from 'lucide-react';
 
 const routes = [
@@ -18,30 +21,49 @@ const routes = [
     label: 'Dashboard',
     icon: BarChart3,
     href: '/components/dashboard',
-    color: 'text-sky-500',
+    color: 'text-white',
   },
   {
     label: 'Trucks',
     icon: Truck,
     href: '/components/truck',
-    color: 'text-violet-500',
+    color: 'text-white',
   },
   {
     label: 'Live Map',
     icon: Map,
     href: '/dashboard/map',
-    color: 'text-pink-700',
+    color: 'text-white',
   },
   {
     label: 'Drivers',
     icon: Users,
-    href: '/dashboard/drivers',
-    color: 'text-orange-700',
+    href: '/components/drivers',
+    color: 'text-white',
+  },
+  {
+    label: 'Users',
+    icon: User,
+    href: '/components/users',
+    color:'text-white'
+  },
+  {
+    label: 'Waste Collection',
+    icon: Trash,
+    href: '/dashboard/wastecollection',
+    color:'text-white'
+  },
+  {
+    label: 'News',
+    icon: Newspaper,
+    href: '/dashboard/news',
+    color:'text-white'
   },
   {
     label: 'Settings',
     icon: Settings,
     href: '/dashboard/settings',
+    color:'text-white'
   },
 ];
 
@@ -49,7 +71,7 @@ export function Sidebar() {
   const pathname = usePathname();
 
   return (
-    <div className="space-y-4 py-4 flex flex-col h-full bg-[#111827] text-white">
+    <div className="space-y-4 py-4 flex flex-col h-full bg-[#4caf50] text-white">
       <div className="px-3 py-2 flex-1">
         <Link href="/components/dashboard" className="flex items-center pl-3 mb-14">
           <div className="relative w-8 h-8 mr-4">
@@ -63,10 +85,10 @@ export function Sidebar() {
               key={route.href}
               href={route.href}
               className={cn(
-                'text-sm group flex p-3 w-full justify-start font-medium cursor-pointer hover:text-white hover:bg-white/10 rounded-lg transition',
+                'text-sm group flex p-3 w-full justify-start font-medium cursor-pointer hover:text-white hover:bg-[#81c784] rounded-lg transition',
                 pathname === route.href
-                  ? 'text-white bg-white/10'
-                  : 'text-zinc-400'
+                  ? 'text-white bg-[#81c784]'
+                  : 'text-white'
               )}
             >
               <div className="flex items-center flex-1">
@@ -79,13 +101,13 @@ export function Sidebar() {
       </div>
       <div className="mt-auto border-t border-gray-700">
         <div className="px-3 py-4">
-          <div className="flex items-center justify-between p-2 text-zinc-400 hover:text-white hover:bg-white/10 rounded-lg transition cursor-pointer">
+          <div className="flex items-center justify-between p-2 text-white hover:text-white hover:bg-white/10 rounded-lg transition cursor-pointer">
             <div className="flex items-center gap-2">
               <Bell className="h-5 w-5" />
               <span className="text-sm">Notifications</span>
             </div>
           </div>
-          <div className="flex items-center justify-between p-2 text-zinc-400 hover:text-white hover:bg-white/10 rounded-lg transition cursor-pointer">
+          <div className="flex items-center justify-between p-2 text-white hover:text-white hover:bg-white/10 rounded-lg transition cursor-pointer">
             <div className="flex items-center gap-2">
               <LogOut className="h-5 w-5" />
               <span className="text-sm">Logout</span>

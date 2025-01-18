@@ -26,11 +26,8 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet"
-import { Plus, Search, Trash2 } from 'lucide-react';
+import { Eye, PencilOff, Plus, Search, Trash2 } from 'lucide-react';
 import { Truck } from '@/app/types';
-import ViewTruck from './layout/view';
-import EditTruck from './layout/edit';
-import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from '@/components/ui/alert-dialog';
 
 const trucks: Truck[] = [
   {
@@ -48,13 +45,13 @@ const trucks: Truck[] = [
   // Add more mock data as needed
 ];
 
-export default function TrucksPage() {
+export default function UsersPage() {
   const [searchTerm, setSearchTerm] = useState('');
 
   return (
     <div className="p-6">
       <div className="flex justify-between items-center mb-6">
-        <h1 className="text-2xl font-bold">Trucks Management</h1>
+        <h1 className="text-2xl font-bold">Users Management</h1>
         <div className="flex gap-4">
           <div className="relative">
             <Search className="absolute left-2 top-2.5 h-4 w-4 text-muted-foreground" />
@@ -68,20 +65,20 @@ export default function TrucksPage() {
           <Sheet>
             <SheetTrigger asChild>
               <Button>
-                <Plus className="mr-2 h-4 w-4" /> Add Truck
+                <Plus className="mr-2 h-4 w-4" /> Add Drivers
               </Button>
             </SheetTrigger>
             <SheetContent className="w-[400px]">
               <SheetHeader>
-                <SheetTitle>Add New Truck</SheetTitle>
+                <SheetTitle>Add New Drivers</SheetTitle>
               </SheetHeader>
               <div className="grid gap-4 py-4">
                 <div className="grid gap-2">
-                  <Label htmlFor="name">Truck Name</Label>
+                  <Label htmlFor="name">Driver Name</Label>
                   <Input id="name" />
                 </div>
                 <div className="grid gap-2">
-                  <Label htmlFor="license">Number Plate</Label>
+                  <Label htmlFor="license">License Plate</Label>
                   <Input id="license" />
                 </div>
                 <div className="grid gap-2">
@@ -109,7 +106,7 @@ export default function TrucksPage() {
                     </SelectContent>
                   </Select>
                 </div>
-                <Button className="mt-4 bg-[#4caf50] hover:bg-[#80d983]">Save Truck</Button>
+                <Button className="mt-4">Save Truck</Button>
               </div>
             </SheetContent>
           </Sheet>
@@ -139,12 +136,13 @@ export default function TrucksPage() {
                 <TableCell>{truck.license_plate}</TableCell>
                 <TableCell>
                   <span
-                    className={`px-2 py-1 rounded-full text-xs ${truck.status === 'active'
+                    className={`px-2 py-1 rounded-full text-xs ${
+                      truck.status === 'active'
                         ? 'bg-green-100 text-green-800'
                         : truck.status === 'maintenance'
-                          ? 'bg-yellow-100 text-yellow-800'
-                          : 'bg-red-100 text-red-800'
-                      }`}
+                        ? 'bg-yellow-100 text-yellow-800'
+                        : 'bg-red-100 text-red-800'
+                    }`}
                   >
                     {truck.status}
                   </span>
@@ -152,29 +150,16 @@ export default function TrucksPage() {
                 <TableCell>{truck.fuel_level}%</TableCell>
                 <TableCell>{truck.next_maintenance}</TableCell>
                 <TableCell>
-                  <div className="flex flex-row gap-2">
-                    <ViewTruck />
-                    <EditTruck />
-                    <AlertDialog>
-                      <AlertDialogTrigger >
-                      <Button className="p-2 bg-red-500 border rounded hover:bg-red-500">
+                <div className="flex flex-row gap-2">
+                    <Button className="p-2 bg-green-500 border rounded hover:bg-green-500">
+                      <Eye className="w-4 h-4" />
+                    </Button>
+                    <Button className="p-2 bg-blue-500 border rounded hover:bg-blue-500">
+                      <PencilOff className="w-4 h-4" />
+                    </Button>
+                    <Button className="p-2 bg-red-500 border rounded hover:bg-red-500">
                       <Trash2 className="w-4 h-4" />
                     </Button>
-                      </AlertDialogTrigger>
-                      <AlertDialogContent>
-                        <AlertDialogHeader>
-                          <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
-                          <AlertDialogDescription>
-                            This action cannot be undone. This will permanently delete your account
-                            and remove your data from our servers.
-                          </AlertDialogDescription>
-                        </AlertDialogHeader>
-                        <AlertDialogFooter>
-                          <AlertDialogCancel>Cancel</AlertDialogCancel>
-                          <AlertDialogAction className='bg-[#4caf50]'>Delete</AlertDialogAction>
-                        </AlertDialogFooter>
-                      </AlertDialogContent>
-                    </AlertDialog>
                   </div>
                 </TableCell>
               </TableRow>
