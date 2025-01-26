@@ -30,9 +30,15 @@ const routes = [
     color: 'text-white',
   },
   {
-    label: 'Live Map',
+    label: 'Map',
     icon: Map,
     href: '/dashboard/map',
+    color: 'text-white',
+  },
+  {
+    label: 'Vehicle',
+    icon: Map,
+    href: '/components/Vehicle',
     color: 'text-white',
   },
   {
