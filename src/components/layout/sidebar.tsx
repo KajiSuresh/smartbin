@@ -12,7 +12,7 @@ import {
   Bell,
   LogOut,
   Trash ,
-  User,
+
   Newspaper
 } from 'lucide-react';
 
@@ -24,15 +24,15 @@ const routes = [
     color: 'text-white',
   },
   {
-    label: 'Trucks',
+    label: 'users',
     icon: Truck,
-    href: '/components/truck',
+    href: '/components/users',
     color: 'text-white',
   },
   {
-    label: 'Map',
+    label: 'Routes',
     icon: Map,
-    href: '/dashboard/map',
+    href: '/components/routes',
     color: 'text-white',
   },
   {
@@ -47,12 +47,7 @@ const routes = [
     href: '/components/drivers',
     color: 'text-white',
   },
-  {
-    label: 'Users',
-    icon: User,
-    href: '/components/users',
-    color:'text-white'
-  },
+  
   {
     label: 'Waste Collection',
     icon: Trash,
